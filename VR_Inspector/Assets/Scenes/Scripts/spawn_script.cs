@@ -5,12 +5,15 @@ using UnityEngine;
 public class spawn_script : MonoBehaviour
 {
 
-    public Panel currentPanel = null;
+    public Canvas canvasPanel = null;
+
+    public Camera Player = null;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentPanel.Hide();
+
+        canvasPanel.enabled = false;
     }
 
     // Update is called once per frame
@@ -18,18 +21,19 @@ public class spawn_script : MonoBehaviour
     {
         if (OVRInput.GetDown(OVRInput.Button.Two))
         {
-            currentPanel.Show();
+            canvasShow();
         }
     }
 
     public void canvasShow()
     {
+        canvasPanel.transform.position = Player.transform.position + (Player.transform.forward * 3);
 
+        canvasPanel.transform.LookAt(transform.position + Player.transform.rotation * Vector3.back, Player.transform.rotation * Vector3.up);
+        canvasPanel.transform.Rotate(0, 180, 0);
+
+        canvasPanel.enabled = true;
     }
 
-    public void canvasButtonHide()
-    {
-        currentPanel.Hide();
-    }
 
 }

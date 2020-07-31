@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     public Panel currentPanel = null;
@@ -23,11 +23,11 @@ public class MenuManager : MonoBehaviour
         currentPanel.Show();
     }
 
-    private void Update()
+/*    private void Update()
     {
         if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger) || OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
             GoToPrevious();
-    }
+    }*/
 
     public void GoToPrevious()
     {
@@ -60,5 +60,15 @@ public class MenuManager : MonoBehaviour
     {
         OVRManager.PlatformUIConfirmQuit();
         return;
+    }
+
+    public void LaunchScene1()
+    {
+        SceneManager.LoadScene("Scene1");
+    }
+
+    public void LaunchScene2()
+    {
+        SceneManager.LoadScene("Scene2");
     }
 }
